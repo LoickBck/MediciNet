@@ -36,7 +36,7 @@ export const createUser = async (user: CreateUserParams) => {
 
       return existingUser.users[0];
     }
-    console.error("An error occurred while creating a new user:", error);
+    console.error("Une erreur s'est produite lors de la création d'un nouvel utilisateur:", error);
   }
 };
 
@@ -48,7 +48,7 @@ export const getUser = async (userId: string) => {
     return parseStringify(user);
   } catch (error) {
     console.error(
-      "An error occurred while retrieving the user details:",
+      "Une erreur s'est produite lors de la récupération des détails de l'utilisateur:",
       error
     );
   }
@@ -89,7 +89,7 @@ export const registerPatient = async ({
 
     return parseStringify(newPatient);
   } catch (error) {
-    console.error("An error occurred while creating a new patient:", error);
+    console.error("Une erreur s'est produite lors de la création d'un nouveau patient:", error);
   }
 };
 
@@ -105,7 +105,7 @@ export const getPatient = async (userId: string) => {
     return parseStringify(patients.documents[0]);
   } catch (error) {
     console.error(
-      "An error occurred while retrieving the patient details:",
+      "Une erreur s'est produite lors de la récupération des informations du patient:",
       error
     );
   }
