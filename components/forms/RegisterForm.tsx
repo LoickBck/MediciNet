@@ -177,8 +177,59 @@ const RegisterForm = ({user}: { user: User}) => {
             ))}
         </CustomFormField>
         <div className="flex flex-col gap-6 xl:flex-row">
-
+        <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="insuranceProvider"
+            label="Mutualité"
+            placeholder="Mutualité Chrétienne, etc"
+            />
+            <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="insurancePolicyNumber"
+            label="Numéro d'affiliation"
+            placeholder="540"
+            />
         </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="allergies"
+            label="Allergie (s'il y en a)"
+            placeholder="Pollen, Moutarde, Soja, Crustacés, etc.."
+            />
+            <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="currentMedication"
+            label="Traitement actuel (s'il y en a)"
+            placeholder="Antibiotiques, Antidépresseurs, Rééducation cardiaque, Acupuncture, etc.."
+            />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="familyMedicalHistory"
+            label="Antécedent médical familiale"
+            placeholder="Ma mère est la mononucléose, mon père a une ostéogenèse imparfaite, etc.."
+            />
+            <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="pastMedicalHistory"
+            label="Historique médicale"
+            placeholder="Varicelle contractée dans l'enfance, Fracture du poignet droit en 2015 traitée par immobilisation (plâtre), etc.."
+            />
+        </div>
+        <section className="space-y-6">
+            <div className="mb-9 space-y-1">
+            </div>
+            <h2 className="sub-header">Identification et vérification</h2>
+        </section>
+
 
         <SubmitButton isLoading={isLoading}>
           Commencer
