@@ -6,7 +6,7 @@ declare type SearchParamProps = {
   };
   
   declare type Gender = "Homme" | "Femme" | "Autre";
-  declare type Status = "en attente" | "programmé" | "annulé";
+  declare type Status = "attente" | "programmé" | "annulé";
   
   declare interface CreateUserParams {
     name: string;
