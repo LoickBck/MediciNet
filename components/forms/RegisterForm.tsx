@@ -7,37 +7,60 @@ import { Form, FormControl } from "@/components/ui/form"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
-import { createUser } from "@/lib/actions/patient.actions"
+import { registerPatient } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
 import { RadioGroup } from "@radix-ui/react-radio-group"
 import { RadioGroupItem } from "../ui/radio-group"
-import { Doctors, GenderOptions } from "@/constants"
+import { Doctors, GenderOptions, IdentificationTypes, PatientFormDefaultValues } from "@/constants"
 import { Label } from "../ui/label"
 import Image from "next/image"
 import { SelectItem } from "../ui/select"
+import { FileUploader } from "../FileUploader";
+import { PatientFormValidation } from "@/lib/validation";
  
 const RegisterForm = ({user}: { user: User}) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const form = useForm<z.infer<typeof PatientFormValidation>>({
+    resolver: zodResolver(PatientFormValidation),
     defaultValues: {
+      ...PatientFormDefaultValues,
       name: "",
       email: "",
       phone: "",
     },
-  })
+  });
  
-  async function onSubmit({name, email, phone }: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
     setIsLoading(true);
+
+    let formData;
+    if (
+      values.identificationDocument &&
+      values.identificationDocument.length > 0
+    ) {
+      const blobFile = new Blob([values.identificationDocument[0]], {
+        type: values.identificationDocument[0].type,
+      });
+
+      formData = new FormData();
+      formData.append("blobFile", blobFile);
+      formData.append("fileName", values.identificationDocument[0].name);
+    }
+
     try {
-      const userData = {name, email, phone};
+      const patientData = {
+        ...values,
+        userId: user.$id,
+        birthDate: new Date(values.birthDate),
+        identificationDocument: formData,
+      }
 
-      const user = await createUser(userData);
+      //@ts-ignore
+      const patient = await registerPatient(patientData);
 
-      if (user) router.push(`/patients/${user.id}/register`) 
+      if (patient) router.push(`/patients/${user.$id}/nouveau-rendez-vous`);
     } catch (error) {
       console.log(error);
     }
@@ -157,7 +180,7 @@ const RegisterForm = ({user}: { user: User}) => {
         <CustomFormField
             fieldType={FormFieldType.SELECT}
             control={form.control}
-            name="primaryPhysycian"
+            name="primaryPhysician"
             label="Médecin généraliste"
             placeholder="Sélectionner un médecin"
             >
@@ -229,10 +252,63 @@ const RegisterForm = ({user}: { user: User}) => {
             </div>
             <h2 className="sub-header">Identification et vérification</h2>
         </section>
-
+        <CustomFormField
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="identificationType"
+            label="Type d'identification"
+            placeholder="Sélectionner un moyen d'identification"
+            >
+            {IdentificationTypes.map((type) => (
+                <SelectItem key={type} value={type}>
+                    {type}
+                </SelectItem>
+            ))}
+        </CustomFormField>
+        <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="identificationNumber"
+            label="Numéro d'identification"
+            placeholder="42012205181"
+        />
+        <CustomFormField
+            fieldType={FormFieldType.SKELETON}
+            control={form.control}
+            name="identificationDocument"
+            label="Scan de votre document d'identité"
+            renderSkeleton={(field) =>(
+                <FormControl>
+                    <FileUploader files={field.value} onChange={field.onChange} />
+                </FormControl>
+            )}
+        />
+        <section className="space-y-6">
+            <div className="mb-9 space-y-1">
+            </div>
+            <h2 className="sub-header">Consentement et confidentialité</h2>
+        </section>
+        <CustomFormField 
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="treatmentConsent"
+            label="J'accepte le traitement des données"
+        />
+        <CustomFormField 
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="disclosureConsent"
+            label="J'accepte la divulgation d'informations"
+        />
+        <CustomFormField 
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="privacyConsent"
+            label="J'accepte la politique de confidentialité"
+        />
 
         <SubmitButton isLoading={isLoading}>
-          Commencer
+          Soumettre et continuer
         </SubmitButton>
             </form>
         </Form>

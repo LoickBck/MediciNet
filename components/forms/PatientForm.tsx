@@ -33,14 +33,21 @@ const PatientForm = () => {
     },
   })
  
-  async function onSubmit({name, email, phone }: z.infer<typeof UserFormValidation>) {
+  const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
     setIsLoading(true);
+
     try {
-      const userData = {name, email, phone};
+      const user = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+      };
 
-      const user = await createUser(userData);
+      const newUser = await createUser(user);
 
-      if (user) router.push(`/patients/${user.id}/register`) 
+      if (newUser) {
+        router.push(`/patients/${newUser.$id}/register`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +59,7 @@ const PatientForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
         <section className="mb-12 space-y-4">
             <h1 className="header">Bonjour👋,</h1>
-            <p className="text-dark-700">Commencez avec les rendez-vous.</p>
+            <p className="text-dark-700">Débutez avec les rendez-vous.</p>
         </section>
         
         <CustomFormField
