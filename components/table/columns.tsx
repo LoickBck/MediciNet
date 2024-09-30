@@ -6,17 +6,10 @@ import { formatDateTime } from "@/lib/utils"
 import Image from "next/image"
 import { Doctors } from "@/constants"
 import AppointmentModal from "../AppointmentModal"
+import { Appointment } from "@/types/appwrite.types"
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string
-  amount: number
-  status: "en attente" | "en cours" | "réussi" | "échoué"
-  email: string
-}
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Appointment>[] = [
     {
         header: 'ID',
         cell: ({ row }) => <p className="text-14-medium">{row.index + 1}</p>
@@ -68,12 +61,22 @@ export const columns: ColumnDef<Payment>[] = [
     {
         id: "actions",
         header: () => <div className="pl-4">Actions</div>,
-        cell: ({ row }) => {
+        cell: ({ row: {original: data} }) => {
      
           return (
             <div className="flex gap-1">
-                <AppointmentModal type="programmer" />
-                <AppointmentModal type="annuler" />
+                <AppointmentModal
+                type="programmer" 
+                patientId={data.patient.$id}
+                userId={data.userId}
+                appointment={data}
+                />
+                <AppointmentModal
+                type="annuler" 
+                patientId={data.patient.$id}
+                userId={data.userId}
+                appointment={data}
+                />
             </div>
           )
         },

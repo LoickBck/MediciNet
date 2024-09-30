@@ -8,10 +8,15 @@ import {
   } from "@/components/ui/dialog"
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { Appointment } from "@/types/appwrite.types";
+import AppointmentForm from "./forms/AppointmentForm";
   
 
-const AppointmentModal = ({type}: {
+const AppointmentModal = ({type, patientId, userId, appointment,}: {
     type: 'programmer' | 'annuler'
+    patientId: string,
+    userId: string,
+    appointment?: Appointment,
 }) => {
     const [open, setOpen] = useState(false);
   return (
@@ -28,6 +33,13 @@ const AppointmentModal = ({type}: {
                 Veuillez remplir les informations suivantes pour {type} un rendez-vous
             </DialogDescription>
           </DialogHeader>
+          <AppointmentForm 
+            userId={userId}
+            patientId={patientId}
+            type={type}
+            appointment={appointment}
+            setOpen={setOpen}
+          />
         </DialogContent>
     </Dialog>
 
