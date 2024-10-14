@@ -25,7 +25,7 @@ export default function RendezVous({searchParams}: SearchParamProps) {
             <p className="justify-items-end text-dark-600 xl:text-left">
               © 2024 MediciNet
             </p>
-            <Link href="/?admin=true" className="text-green-500">
+            <Link href="/rendez-vous/?admin=true" className="text-green-500">
               Admin
             </Link>
           </div>

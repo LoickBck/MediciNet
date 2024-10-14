@@ -97,7 +97,7 @@ export default function Home() {
       </div>
 
       <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-        <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-indigo-400">
+        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-indigo-400">
           <Image
             alt="..."
             src="/assets/images/home-img.jpg"
@@ -126,6 +126,7 @@ export default function Home() {
               </h4>
             <p className="text-md font-light mt-2 text-white">
               Notre sélection de différents médecins sera combler vos attentes et vos besoins, n'hésitez pas à prendre rendez-vous!
+              Même si c'est juste un check-up 🩺😉
               </p>
           </blockquote>
         </div>
