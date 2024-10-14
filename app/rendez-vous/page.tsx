@@ -12,13 +12,16 @@ export default function RendezVous({searchParams}: SearchParamProps) {
 
       <section className="remove-scrollbar container mx-auto">
         <div className="sub-container max-w-[496px]">
+            <Link href="/">
           <Image
             src="/assets/icons/logo-full.svg"
             height={1000}
             width={1000}
             alt="patient"
             className="mb-12 h-10 w-fit"
-          />
+          >
+          </Image>
+            </Link>
           <PatientForm />
 
           <div className="text-14-regular mt-20 flex justify-between">

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Faq from "@/components/Faq";
 
 export default function Home() {
   const gifs = [
@@ -132,6 +133,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <Faq />
       <p className="copyright py-12 xl:ml-10">
               © 2024 MediciNet
       </p>
