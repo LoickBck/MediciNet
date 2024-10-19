@@ -42,10 +42,10 @@ export default function Home() {
             className="mb-12 h-10 w-fit"
           />
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl text-white">
-            Découvrez <br /> une nouvelle façon de faire.
+            Découvrez <br /> une nouvelle façon de prendre vos <span className="text-green-500">rendez-vous</span>.
           </h1>
           <p className="max-w-2xl mb-6 font-light text-dark-700 lg:mb-8 md:text-lg lg:text-xl">
-            Simplifiez-vous la vie, utilisez MediciNet.
+            Simplifiez-vous la vie, utilisez MediciNet pour prendre un rendez-vous médical en quelques clics. 
           </p>
         </div>
         {/* Image : Colonne 5/12 en grand écran, en dessous en mobile */}

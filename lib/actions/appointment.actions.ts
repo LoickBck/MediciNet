@@ -1,8 +1,8 @@
 'use server'
 
 import { ID, Query } from "node-appwrite";
-import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases } from "../appwrite.config";
-import { parseStringify } from "../utils";
+import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, messaging } from "../appwrite.config";
+import { formatDateTime, parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
 
@@ -85,7 +85,14 @@ export const updateAppointment = async ({ appointmentId, userId, appointment, ty
             throw new Error('Rendez-vous introuvable');
         }
 
-        //à faire Erreur SMS
+        const smsMessage = `
+        Bonjour, vous avez un message de MediciNet.
+        ${type === 'programmer' 
+            ? `Votre rendez-vous à été programmé pour le ${formatDateTime(appointment.schedule!).dateTime} avec le Dr.${appointment.primaryPhysician}.`
+            : `Nous sommes désolé de vous informer que votre rendez-vous à été annulé. Pour la raison suivante: ${appointment.cancellationReason}`
+        }`
+
+        await sendSMSNotification(userId, smsMessage);
 
         revalidatePath('/admin');
         return parseStringify(updateAppointment);
@@ -93,3 +100,19 @@ export const updateAppointment = async ({ appointmentId, userId, appointment, ty
         console.log(error);
     }
 }
+
+export const sendSMSNotification = async ( userId: string, content: string ) => {
+    try {
+        const message = await messaging.createSms(
+            ID.unique(),
+            content,
+            [],
+            [userId]
+        )
+
+        return parseStringify(message);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
