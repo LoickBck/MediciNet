@@ -1,17 +1,21 @@
-"use client"
+"use client"; // Directive indiquant que ce composant doit être exécuté côté client.
 
-import * as React from "react"
-import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
+import * as React from "react"; // Importation de React pour utiliser les composants et hooks.
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"; // Importation des composants de la bibliothèque `@radix-ui/react-alert-dialog` pour gérer les boîtes de dialogue d'alerte.
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"; // Importation de la fonction utilitaire pour combiner des classes CSS.
+import { buttonVariants } from "@/components/ui/button"; // Importation des variantes de style pour les boutons.
 
-const AlertDialog = AlertDialogPrimitive.Root
+// Déclaration du composant `AlertDialog` en utilisant le composant racine de `radix`.
+const AlertDialog = AlertDialogPrimitive.Root;
 
-const AlertDialogTrigger = AlertDialogPrimitive.Trigger
+// Déclaration du composant `AlertDialogTrigger` pour déclencher l'ouverture de la boîte de dialogue.
+const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
 
-const AlertDialogPortal = AlertDialogPrimitive.Portal
+// Déclaration du composant `AlertDialogPortal` pour rendre la boîte de dialogue en dehors de la hiérarchie DOM principale.
+const AlertDialogPortal = AlertDialogPrimitive.Portal;
 
+// Composant pour l'arrière-plan de la boîte de dialogue, gérant l'animation et le style.
 const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
@@ -24,9 +28,10 @@ const AlertDialogOverlay = React.forwardRef<
     {...props}
     ref={ref}
   />
-))
-AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
+));
+AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
 
+// Composant pour le contenu de la boîte de dialogue, gérant le positionnement et les animations.
 const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
@@ -42,9 +47,10 @@ const AlertDialogContent = React.forwardRef<
       {...props}
     />
   </AlertDialogPortal>
-))
-AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
+));
+AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName;
 
+// Composant pour l'en-tête de la boîte de dialogue, gérant l'espacement et le style.
 const AlertDialogHeader = ({
   className,
   ...props
@@ -56,9 +62,10 @@ const AlertDialogHeader = ({
     )}
     {...props}
   />
-)
-AlertDialogHeader.displayName = "AlertDialogHeader"
+);
+AlertDialogHeader.displayName = "AlertDialogHeader";
 
+// Composant pour le pied de page de la boîte de dialogue, gérant l'affichage des boutons et leur positionnement.
 const AlertDialogFooter = ({
   className,
   ...props
@@ -70,9 +77,10 @@ const AlertDialogFooter = ({
     )}
     {...props}
   />
-)
-AlertDialogFooter.displayName = "AlertDialogFooter"
+);
+AlertDialogFooter.displayName = "AlertDialogFooter";
 
+// Composant pour le titre de la boîte de dialogue.
 const AlertDialogTitle = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
@@ -82,9 +90,10 @@ const AlertDialogTitle = React.forwardRef<
     className={cn("text-lg font-semibold", className)}
     {...props}
   />
-))
-AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
+));
+AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName;
 
+// Composant pour la description de la boîte de dialogue.
 const AlertDialogDescription = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
@@ -94,10 +103,11 @@ const AlertDialogDescription = React.forwardRef<
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
-))
+));
 AlertDialogDescription.displayName =
-  AlertDialogPrimitive.Description.displayName
+  AlertDialogPrimitive.Description.displayName;
 
+// Composant pour l'action principale de la boîte de dialogue (ex : bouton de confirmation).
 const AlertDialogAction = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Action>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
@@ -107,9 +117,10 @@ const AlertDialogAction = React.forwardRef<
     className={cn(buttonVariants(), className)}
     {...props}
   />
-))
-AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
+));
+AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;
 
+// Composant pour le bouton d'annulation de la boîte de dialogue.
 const AlertDialogCancel = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
@@ -123,9 +134,10 @@ const AlertDialogCancel = React.forwardRef<
     )}
     {...props}
   />
-))
-AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName
+));
+AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;
 
+// Exportation de tous les composants de la boîte de dialogue pour une utilisation facile ailleurs dans l'application.
 export {
   AlertDialog,
   AlertDialogPortal,
@@ -138,4 +150,4 @@ export {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-}
+};

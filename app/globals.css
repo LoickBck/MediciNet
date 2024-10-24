@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --radius: 10px;
+}
 /* TAILWIND STYLES */
 @layer base {
   /* Remove scrollbar */

@@ -1,0 +1,19 @@
+{
+  "name": "MediciNet",
+  "short_name": "MediciNet",
+  "description": "Système de gestion des soins de santé pour planifier et gérer les rendez-vous, dossiers médicaux et bien plus.",
+  "start_url": "/",
+  "background_color": "#24AE7C",
+  "theme_color": "#24AE7C",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/",
+  "lang": "fr"
+}
