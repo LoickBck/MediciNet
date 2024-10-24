@@ -3,8 +3,16 @@
   "short_name": "MediciNet",
   "description": "Système de gestion des soins de santé pour planifier et gérer les rendez-vous, dossiers médicaux et bien plus.",
   "start_url": "/",
-  "background_color": "#24AE7C",
-  "theme_color": "#24AE7C",
+  "categories": [
+    "soins",
+    "santé",
+    "rendez-vous médical",
+    "médical",
+    "médecin",
+    "médecin généraliste"
+  ],
+  "background_color": "##121619",
+  "theme_color": "##121619",
   "display": "standalone",
   "orientation": "portrait-primary",
   "icons": [
@@ -15,5 +23,11 @@
     }
   ],
   "scope": "/",
-  "lang": "fr"
+  "lang": "fr",
+  "shortcuts": {
+    "name": "Planifier un rendez-vous",
+    "short_name": "Rendez-vous",
+    "description": "Accéder rapidement à la planification des rendez-vous.",
+    "url": "/rendez-vous"
+  }
 }

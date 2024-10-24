@@ -40,7 +40,7 @@ const Faq = () => {
                       </g>
                     </svg>
                   </div>
-                  <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                  <div className="bg-gray-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <h4 className="text-md leading-6 font-medium text-gray-900">
                       Que faire après avoir fais ma demande de rendez-vous ?
                     </h4>
@@ -48,7 +48,7 @@ const Faq = () => {
                 </div>
 
                 <div className="flex flex-row items-start">
-                  <div className="bg-indigo-100 p-5 px-10 w-full flex items-center">
+                  <div className="bg-indigo-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <p className="text-gray-700 text-sm">
                       Nous vous contacterons dans les plus brefs délai pour
                       confirmer ou annuler votre rendez-vous. Toutes
@@ -127,7 +127,7 @@ const Faq = () => {
                       </g>
                     </svg>
                   </div>
-                  <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                  <div className="bg-gray-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <h4 className="text-md leading-6 font-medium text-gray-900">
                       Puis-je prendre plusieurs rendez-vous avec différents
                       médecin ?
@@ -136,9 +136,9 @@ const Faq = () => {
                 </div>
 
                 <div className="flex flex-row items-start">
-                  <div className="bg-indigo-100 p-5 px-10 w-full flex items-center">
+                  <div className="bg-indigo-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <p className="text-gray-700 text-sm">
-                      Vous pouvez effictivement prendre plusieurs rendez-vous
+                      Vous pouvez effectivement prendre plusieurs rendez-vous
                       avec différents médecins à la fois, en utilisant notre
                       application. Pour cela, accédé à la page rendez-vous puis
                       sélectionner le médecin en cliquant sur le nom du médecin
@@ -216,7 +216,7 @@ const Faq = () => {
                       </g>
                     </svg>
                   </div>
-                  <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                  <div className="bg-gray-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <h4 className="text-md leading-6 font-medium text-gray-900">
                       Si l'heure de mon rendez-vous ne me convient pas ?{" "}
                     </h4>
@@ -224,11 +224,12 @@ const Faq = () => {
                 </div>
 
                 <div className="flex flex-row items-start">
-                  <div className="bg-indigo-100 p-5 px-10 w-full flex items-center">
+                  <div className="bg-indigo-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <p className="text-gray-700 text-sm">
                       Recommencer la procédure de prise de rendez-vous, et
                       notifiez le dans les remarques spécifiques. De ce fait
                       nous pourrons annuler et reprogrammer votre rendez-vous.
+                      Ou alors envoyer un mail à medicinet@support.com
                     </p>
                   </div>
                   <div className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-indigo-500 text-white border-4 border-white text-xl font-semibold">

@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google"; // Importation de la polic
 import { cn } from "@/lib/utils"; // Importation de la fonction utilitaire `cn` pour gérer les classes CSS.
 import "./globals.css"; // Importation des styles globaux.
 import { ThemeProvider } from "@/components/theme-provider"; // Importation du fournisseur de thème pour gérer les thèmes de l'application.
+import CookieConsent from "@/components/CookieConsent"; // Import du composant de consentement
 
 /**
  * Configuration de la police `Plus Jakarta Sans` :
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
 /**
  * Définit la couleur du thème pour le navigateur mobile.
  */
-export const generateThemeColor = () => "#24AE7C";
+export const generateThemeColor = () => "#131619";
 
 /**
  * Définit la configuration de l'affichage pour les appareils mobiles.
@@ -96,19 +97,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      {/* Définit la langue de la page comme étant le français */}
+      <head>
+        <link rel="icon" href="/assets/favicon.ico" />
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
+        <link rel="apple-touch-icon" href="/assets/icons/logo-icon.svg" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-dark-300 font-sans antialiased",
           fontSans.variable
-        )} // Applique des classes CSS de base au corps de la page.
+        )}
       >
-        {/* Fournisseur de thème pour gérer le thème sombre par défaut */}
-        <ThemeProvider
-          attribute="class" // Gère les classes CSS en fonction du thème actif.
-          defaultTheme="dark" // Définit le thème sombre comme thème par défaut.
-        >
-          {children} {/* Affiche les composants enfants */}
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+          <CookieConsent /> {/* Ajout du composant de consentement */}
         </ThemeProvider>
       </body>
     </html>
