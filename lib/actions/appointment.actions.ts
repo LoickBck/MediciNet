@@ -125,10 +125,10 @@ export const updateAppointment = async ({
         Bonjour, vous avez un message de MediciNet.
         ${
           type === "programmer"
-            ? `Votre rendez-vous à été programmé pour le ${
+            ? `Votre rendez-vous a été programmé pour le ${
                 formatDateTime(appointment.schedule!).dateTime
               } avec le Dr.${appointment.primaryPhysician}.`
-            : `Nous sommes désolé de vous informer que votre rendez-vous à été annulé. Pour la raison suivante: ${appointment.cancellationReason}`
+            : `Nous sommes désolé de vous informer que votre rendez-vous a été annulé. Pour la raison suivante: ${appointment.cancellationReason}`
         }`;
 
     await sendSMSNotification(userId, smsMessage); // Envoie un SMS au patient.

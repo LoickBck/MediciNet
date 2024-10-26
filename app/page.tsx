@@ -135,9 +135,9 @@ export default function Home() {
                 Nos médecins peuvent vous aider!
               </h4>
               <p className="text-md font-light mt-2 text-white">
-                Notre sélection de différents médecins sera combler vos attentes
-                et vos besoins, n'hésitez pas à prendre rendez-vous! Même si
-                c'est juste un check-up 🩺😉
+                Notre sélection de différents médecins saura combler vos
+                attentes et vos besoins, n'hésitez pas à prendre rendez-vous!
+                Même si c'est juste un check-up 🩺😉
               </p>
             </blockquote>
           </div>
