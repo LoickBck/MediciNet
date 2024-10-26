@@ -2,10 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Patient } from "../../../types/appwrite.types";
-import { fetchPatientByUserId } from "../../../lib/actions/FetchPatientByUserId";
-import { fetchAllPatients } from "../../../lib/actions/FetchAllPatients";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import Link from "next/link";
+import { Patient } from "@/types/appwrite.types";
+import { deletePatientById } from "@/lib/actions/deletePatientById";
+import { fetchAllPatients } from "@/lib/actions/fetchAllPatients";
+import { fetchPatientByUserId } from "@/lib/actions/FetchPatientByUserId";
 
 const PatientDetailsPage = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
@@ -43,6 +46,33 @@ const PatientDetailsPage = () => {
     } else {
       setSelectedPatient(null);
     }
+  };
+
+  const confirmDelete = async () => {
+    if (!selectedPatient) return;
+    try {
+      await deletePatientById(selectedPatient.userId);
+      toast.success("Patient supprimé avec succès !");
+      setPatients((prev) =>
+        prev.filter((patient) => patient.userId !== selectedPatient.userId)
+      );
+      setSelectedPatient(null);
+    } catch (error) {
+      toast.error("Erreur lors de la suppression du patient.", {
+        description: "Une erreur s'est produite. Veuillez réessayer.",
+      });
+      console.error("Erreur lors de la suppression du patient :", error);
+    }
+  };
+
+  const handleDeletePatient = () => {
+    toast.warning("Voulez-vous vraiment supprimer ce patient ?", {
+      description: "Cette action est irréversible.",
+      action: {
+        label: "Valider",
+        onClick: confirmDelete,
+      },
+    });
   };
 
   if (loading)
@@ -93,9 +123,9 @@ const PatientDetailsPage = () => {
               <span className="invisible relative">Retour</span>
             </button>
           </Link>
+
           <h1 className="text-3xl font-bold mb-6">Détails du Patient</h1>
 
-          {/* Select component for choosing a patient */}
           <select
             onChange={(e) => handlePatientSelect(e.target.value)}
             defaultValue=""
@@ -112,7 +142,7 @@ const PatientDetailsPage = () => {
           </select>
 
           {selectedPatient && (
-            <div className="shadow-lg border-dark-700 border rounded-lg p-6 w-full max-w-3xl">
+            <div className="p-6 w-full max-w-3xl">
               <div className="px-4 sm:px-0">
                 <h3 className="text-base font-semibold leading-7 text-white">
                   Informations Personnelles
@@ -124,6 +154,7 @@ const PatientDetailsPage = () => {
               <div className="mt-6 border-t border-gray-600">
                 <dl className="divide-y divide-gray-600">
                   {[
+                    // Pour chaque champ, incluons `break-words` et `overflow-hidden`
                     { label: "Nom", value: selectedPatient.name },
                     { label: "Email", value: selectedPatient.email },
                     { label: "Téléphone", value: selectedPatient.phone },
@@ -147,6 +178,7 @@ const PatientDetailsPage = () => {
                       label: "Numéro d'affiliation",
                       value: selectedPatient.insurancePolicyNumber,
                     },
+                    // Ajout de `break-words` et `max-w-md` pour les allergies
                     { label: "Allergies", value: selectedPatient.allergies },
                     {
                       label: "Médicaments Actuels",
@@ -188,7 +220,7 @@ const PatientDetailsPage = () => {
                       <dt className="text-sm font-medium leading-6 text-gray-300">
                         {label}
                       </dt>
-                      <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
+                      <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0 break-words overflow-hidden max-w-md">
                         {value}
                       </dd>
                     </div>
@@ -212,16 +244,25 @@ const PatientDetailsPage = () => {
                 </dl>
               </div>
 
-              <button
-                className="mt-6 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                onClick={() => setSelectedPatient(null)}
-              >
-                Fermer
-              </button>
+              <div className="flex justify-between mt-6">
+                <button
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-400"
+                  onClick={() => setSelectedPatient(null)}
+                >
+                  Fermer
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-400"
+                  onClick={handleDeletePatient}
+                >
+                  Supprimer
+                </button>
+              </div>
             </div>
           )}
         </div>
       </div>
+      <Toaster richColors closeButton position="top-center" />
     </div>
   );
 };

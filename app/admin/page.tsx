@@ -1,5 +1,4 @@
 "use client"; // Directive pour exécuter le composant côté client
-
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -100,6 +99,7 @@ const Admin = () => {
             label="Rendez-vous en attente"
             icon="/assets/icons/pending.svg"
           />
+
           <StatCard
             type="annuler"
             count={appointments?.cancelledCount || 0}
