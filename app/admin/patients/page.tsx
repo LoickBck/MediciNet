@@ -3,17 +3,19 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/sonner";
-import { toast } from "sonner";
 import Link from "next/link";
 import { Patient } from "@/types/appwrite.types";
 import { deletePatientById } from "@/lib/actions/deletePatientById";
 import { fetchAllPatients } from "@/lib/actions/fetchAllPatients";
 import { fetchPatientByUserId } from "@/lib/actions/FetchPatientByUserId";
+import { PatientModal } from "@/components/PatientModal";
+import { toast } from "sonner";
 
 const PatientDetailsPage = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -68,11 +70,12 @@ const PatientDetailsPage = () => {
   const handleDeletePatient = () => {
     toast.warning("Voulez-vous vraiment supprimer ce patient ?", {
       description: "Cette action est irréversible.",
-      action: {
-        label: "Valider",
-        onClick: confirmDelete,
-      },
+      action: { label: "Valider", onClick: confirmDelete },
     });
+  };
+
+  const handleEditPatient = () => {
+    setIsModalOpen(true);
   };
 
   if (loading)
@@ -114,7 +117,7 @@ const PatientDetailsPage = () => {
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  ></path>
+                  />
                 </svg>
               </span>
               <span className="ease absolute flex h-full w-full transform items-center justify-center text-green-500 transition-all duration-300 group-hover:translate-x-full">
@@ -154,7 +157,6 @@ const PatientDetailsPage = () => {
               <div className="mt-6 border-t border-gray-600">
                 <dl className="divide-y divide-gray-600">
                   {[
-                    // Pour chaque champ, incluons `break-words` et `overflow-hidden`
                     { label: "Nom", value: selectedPatient.name },
                     { label: "Email", value: selectedPatient.email },
                     { label: "Téléphone", value: selectedPatient.phone },
@@ -178,7 +180,6 @@ const PatientDetailsPage = () => {
                       label: "Numéro d'affiliation",
                       value: selectedPatient.insurancePolicyNumber,
                     },
-                    // Ajout de `break-words` et `max-w-md` pour les allergies
                     { label: "Allergies", value: selectedPatient.allergies },
                     {
                       label: "Médicaments Actuels",
@@ -220,37 +221,43 @@ const PatientDetailsPage = () => {
                       <dt className="text-sm font-medium leading-6 text-gray-300">
                         {label}
                       </dt>
-                      <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0 break-words overflow-hidden max-w-md">
+                      <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
                         {value}
                       </dd>
                     </div>
                   ))}
-                  {selectedPatient.identificationDocumentUrl && (
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-300">
-                        Document d'Identification
-                      </dt>
-                      <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                        <Image
-                          src={selectedPatient.identificationDocumentUrl}
-                          alt="Document d'identification"
-                          width={200}
-                          height={200}
-                          className="mt-2 border rounded"
-                        />
-                      </dd>
-                    </div>
-                  )}
                 </dl>
               </div>
 
               <div className="flex justify-between mt-6">
+                {/* Bouton Modifier */}
                 <button
                   className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-400"
-                  onClick={() => setSelectedPatient(null)}
+                  onClick={handleEditPatient}
                 >
-                  Fermer
+                  Modifier
                 </button>
+
+                {/* Dialog pour modifier le patient */}
+                {selectedPatient && (
+                  <PatientModal
+                    patient={selectedPatient}
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    onPatientUpdated={(updatedPatient: Patient) => {
+                      setPatients((prev) =>
+                        prev.map((patient) =>
+                          patient.userId === updatedPatient.userId
+                            ? updatedPatient
+                            : patient
+                        )
+                      );
+                      setSelectedPatient(updatedPatient);
+                    }}
+                  />
+                )}
+
+                {/* Bouton Supprimer */}
                 <button
                   className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-400"
                   onClick={handleDeletePatient}
