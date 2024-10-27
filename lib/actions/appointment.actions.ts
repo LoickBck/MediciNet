@@ -17,14 +17,18 @@ import { revalidatePath } from "next/cache"; // Fonction pour revalider le cache
  * @returns Le rendez-vous nouvellement créé après sérialisation.
  */
 export const createAppointment = async (
-  appointment: CreateAppointmentParams
+  appointment: CreateAppointmentParams,
+  patientName: string
 ) => {
   try {
     const newAppointment = await databases.createDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       ID.unique(),
-      appointment
+      {
+        ...appointment,
+        patientName,
+      }
     );
 
     return parseStringify(newAppointment); // Retourne l'objet sérialisé du nouveau rendez-vous.

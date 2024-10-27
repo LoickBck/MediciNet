@@ -67,18 +67,27 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row: { original: data } }) => {
       return (
         <div className="flex gap-1">
-          <AppointmentModal
-            type="programmer"
-            patientId={data.patient.$id}
-            userId={data.userId}
-            appointment={data}
-          />
-          <AppointmentModal
-            type="annuler"
-            patientId={data.patient.$id}
-            userId={data.userId}
-            appointment={data}
-          />
+          {data.patient ? (
+            <AppointmentModal
+              type="programmer"
+              patientId={data.patient.$id}
+              userId={data.userId}
+              appointment={data}
+            />
+          ) : (
+            <span className="ml-4">Indisponible</span>
+          )}
+
+          {data.patient ? (
+            <AppointmentModal
+              type="annuler"
+              patientId={data.patient?.$id} // Utilisation de l'opérateur de chaînage optionnel
+              userId={data.userId}
+              appointment={data}
+            />
+          ) : (
+            <span className="ml-4">Indisponible</span> // Message d'info pour les patients supprimés
+          )}
         </div>
       );
     },

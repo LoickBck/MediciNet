@@ -30,12 +30,14 @@ import { Appointment } from "@/types/appwrite.types"; // Importation du type `Ap
 const AppointmentForm = ({
   userId,
   patientId,
+  patientName,
   type,
   appointment,
   setOpen,
 }: {
   userId: string;
   patientId: string;
+  patientName: string;
   type: "créer" | "annuler" | "programmer";
   appointment?: Appointment;
   setOpen: (open: boolean) => void;
@@ -83,6 +85,7 @@ const AppointmentForm = ({
         const appointmentData = {
           userId,
           patient: patientId,
+          patientName,
           primaryPhysician: values.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
