@@ -40,6 +40,7 @@ const Success = async ({
             height={300}
             width={280}
             alt="succès"
+            unoptimized
           />
           <h2 className="header mb-6 max-w-[600px] text-center">
             Votre <span className="text-green-500">demande de rendez-vous</span>{" "}

@@ -10,6 +10,7 @@ import { useState } from "react"; // Importation du hook `useState` pour gérer 
 import { UserFormValidation } from "@/lib/validation"; // Importation du schéma de validation des utilisateurs.
 import { useRouter } from "next/navigation"; // Importation du hook `useRouter` pour la navigation dans Next.js.
 import { createUser } from "@/lib/actions/patient.actions"; // Importation de la fonction pour créer un nouvel utilisateur.
+import { checkUserExists } from "@/lib/actions/userVerification"; // Importation de la fonction pour vérifier l'existence de l'utilisateur.
 
 /**
  * Énumération pour les types de champs de formulaire.
@@ -51,19 +52,29 @@ const PatientForm = () => {
     setIsLoading(true); // Active l'état de chargement.
 
     try {
-      const user = {
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-      };
+      // Vérifie si l'utilisateur existe déjà
+      const existingUser = await checkUserExists(values.email, values.phone);
 
-      const newUser = await createUser(user); // Appelle la fonction pour créer un nouvel utilisateur.
+      if (existingUser) {
+        // Récupère le `userId` du document patient existant
+        const userId = existingUser.userId; // Assurez-vous que `userId` est bien défini dans les données du patient.
 
-      if (newUser) {
-        router.push(`/patients/${newUser.$id}/register`); // Redirection vers la page d'inscription du patient après la création.
+        // Si l'utilisateur existe déjà, redirige vers la page de rendez-vous avec `userId`.
+        router.push(`/patients/${userId}/nouveau-rendez-vous`);
+      } else {
+        // Si l'utilisateur n'existe pas, crée un nouveau patient
+        const newUser = await createUser({
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+        });
+
+        if (newUser) {
+          router.push(`/patients/${newUser.$id}/register`); // Redirection vers la page d'inscription du patient après la création.
+        }
       }
     } catch (error) {
-      console.log(error); // Affiche les erreurs éventuelles.
+      console.log("Erreur lors de la soumission du formulaire:", error); // Affiche les erreurs éventuelles.
     }
 
     setIsLoading(false); // Désactive l'état de chargement.
@@ -107,8 +118,8 @@ const PatientForm = () => {
           name="phone"
           label="Téléphone"
           placeholder="+32 412 34 56 78"
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="user"
+          iconSrc="/assets/icons/phone.svg"
+          iconAlt="phone"
         />
 
         {/* Bouton de soumission du formulaire */}
