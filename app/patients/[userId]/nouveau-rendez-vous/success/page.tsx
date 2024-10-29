@@ -85,7 +85,9 @@ const Success = async ({
             Nouveau rendez-vous
           </Link>
         </Button>
-        <p className="copyright">© 2024 MediciNet</p>{" "}
+        <p className="copyright">
+          ©2024 <Link href="https://buckloick.com/">Loick Buck</Link>
+        </p>{" "}
         {/* Texte de copyright en bas de page */}
       </div>
     </div>

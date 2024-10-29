@@ -2,6 +2,7 @@ import React from "react"; // Importation de React pour définir des composants 
 import Image from "next/image"; // Importation du composant `Image` de Next.js pour gérer et optimiser les images.
 import RegisterForm from "@/components/forms/RegisterForm"; // Importation du formulaire d'enregistrement personnalisé.
 import { getUser } from "@/lib/actions/patient.actions"; // Importation de la fonction pour récupérer les informations d'un utilisateur spécifique.
+import Link from "next/link";
 
 /**
  * Composant `Register` pour afficher la page d'inscription d'un utilisateur/patient.
@@ -30,7 +31,9 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
           <RegisterForm user={user} />
 
           {/* Texte de copyright en bas de la section */}
-          <p className="copyright py-12">© 2024 MediciNet</p>
+          <p className="copyright py-12">
+            ©2024 <Link href="https://buckloick.com/">Loick Buck</Link>
+          </p>
         </div>
       </section>
 

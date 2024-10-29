@@ -36,7 +36,7 @@ export default function RendezVous({ searchParams }: SearchParamProps) {
           {/* Section avec copyright et lien pour accéder au mode admin */}
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2024 MediciNet
+              ©2024 <Link href="https://buckloick.com/">Loick Buck</Link>
             </p>
             {/* Lien vers la même page mais avec l'accès admin activé */}
             <Link

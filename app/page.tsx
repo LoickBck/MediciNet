@@ -144,7 +144,9 @@ export default function Home() {
         </div>
       </div>
       <Faq />
-      <p className="copyright py-12 xl:ml-10">© 2024 MediciNet</p>
+      <p className="copyright py-12 xl:ml-10">
+        ©2024 <Link href="https://buckloick.com/">Loick Buck</Link>
+      </p>
     </div>
   );
 }
