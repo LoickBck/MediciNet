@@ -6,13 +6,16 @@ import Image from "next/image";
 const PrivacyPolicy = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-dark-300 p-6">
-      <Link href="/">
+      <Link
+        href="/"
+        className="mb-12 h-auto max-w-[50%] sm:max-w-[40%] md:max-w-[40%] lg:max-w-[25%] justify-center items-center"
+      >
         <Image
           src="/assets/icons/logo-full.svg"
           height={1000}
           width={1000}
-          alt="patient"
-          className="mb-12 h-10 sm:h-12 md:h-14 lg:h-14 w-fit"
+          alt="logo"
+          className="object-contain"
         />
       </Link>
       <div className="bg-white rounded-lg p-8 shadow-md max-w-3xl w-full">
