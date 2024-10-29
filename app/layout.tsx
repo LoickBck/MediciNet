@@ -37,9 +37,7 @@ export const metadata: Metadata = {
     "patients",
     "gestion de la santé",
   ],
-  authors: [
-    { name: "MediciNet Team", url: "https://www.buckloick.medicinet.com" },
-  ],
+  authors: [{ name: "Loick Buck", url: "https://www.buckloick.com" }],
   icons: {
     icon: "/assets/favicon.ico",
     shortcut: "/assets/favicon.ico",
@@ -50,7 +48,7 @@ export const metadata: Metadata = {
     title: "MediciNet - Système de gestion des soins de santé",
     description:
       "Simplifiez la gestion des soins de santé avec MediciNet, votre plateforme de gestion des patients et des rendez-vous.",
-    url: "https://www.buckloick.medicinet.com",
+    url: "https://medicinet.vercel.app/",
     siteName: "MediciNet",
     images: [
       {
@@ -83,7 +81,7 @@ const generateThemeColor = (): string => "#131619";
  * Définit la configuration de l'affichage pour les appareils mobiles.
  */
 export const generateViewport = () =>
-  "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+  "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover";
 
 /**
  * Composant `RootLayout` pour définir la mise en page de base de l'application.
@@ -100,9 +98,20 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content={generateViewport()} />
         <meta name="theme-color" content={generateThemeColor()} />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="MediciNet" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <link rel="icon" href="/assets/favicon.ico" />
         <link rel="shortcut icon" href="/assets/favicon.ico" />
-        <link rel="apple-touch-icon" href="/assets/icons/logo-icon.svg" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/assets/images/logo192.png"
+        />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body
         className={cn(

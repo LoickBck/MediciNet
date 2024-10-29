@@ -38,8 +38,8 @@ export default function Home() {
               src="/assets/icons/logo-full.svg"
               height={1000}
               width={1000}
-              alt="patient"
-              className="mb-12 h-10 sm:h-12 md:h-14 lg:h-16 w-fit"
+              alt="logo Medicinet"
+              className="mb-12 h-auto max-w-[60%] sm:max-w-[35%] md:max-w-[35%] lg:max-w-[30%]"
             />
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl text-white">
               Découvrez <br /> une nouvelle façon de prendre vos{" "}
