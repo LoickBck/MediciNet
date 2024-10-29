@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
           height={1000}
           width={1000}
           alt="patient"
-          className="mb-12 h-10 w-fit"
+          className="mb-12 h-10 sm:h-12 md:h-14 lg:h-14 w-fit"
         />
       </Link>
       <div className="bg-white rounded-lg p-8 shadow-md max-w-3xl w-full">
@@ -170,12 +170,14 @@ const PrivacyPolicy = () => {
         </p>
 
         <div className="flex justify-center mt-6">
-          <button
-            onClick={() => alert("Merci pour votre consentement !")}
-            className="bg-green-500 hover:bg-green-400 text-white font-semibold px-6 py-2 rounded-lg"
-          >
-            Accepter
-          </button>
+          <Link href="/">
+            <button
+              onClick={() => alert("Merci pour votre consentement !")}
+              className="bg-green-500 hover:bg-green-400 text-white font-semibold px-6 py-2 rounded-lg"
+            >
+              Accepter
+            </button>
+          </Link>
         </div>
       </div>
     </div>

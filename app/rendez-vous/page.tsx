@@ -26,7 +26,7 @@ export default function RendezVous({ searchParams }: SearchParamProps) {
               height={1000}
               width={1000}
               alt="patient"
-              className="mb-12 h-10 w-fit"
+              className="mb-12 h-10 sm:h-12 md:h-14 lg:h-14 w-fit"
             />
           </Link>
 
@@ -39,7 +39,10 @@ export default function RendezVous({ searchParams }: SearchParamProps) {
               © 2024 MediciNet
             </p>
             {/* Lien vers la même page mais avec l'accès admin activé */}
-            <Link href="/rendez-vous/?admin=true" className="text-green-500">
+            <Link
+              href="/rendez-vous/?admin=true"
+              className="text-green-500 ease-in transition hover:text-green-400"
+            >
               Admin
             </Link>
           </div>

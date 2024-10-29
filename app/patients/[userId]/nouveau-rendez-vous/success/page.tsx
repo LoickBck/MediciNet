@@ -30,7 +30,7 @@ const Success = async ({
             height={1000}
             width={1000}
             alt="logo"
-            className="h-10 w-fit"
+            className="mb-12 h-10 sm:h-12 md:h-14 lg:h-16 w-fit"
           />
         </Link>
         {/* Section affichant le message de succès */}

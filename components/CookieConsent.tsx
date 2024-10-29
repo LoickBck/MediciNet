@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { usePathname } from "next/navigation"; // Importer le hook usePathname
 
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const pathname = usePathname(); // Récupérer le chemin actuel
 
   useEffect(() => {
     // Vérifier si le cookie de consentement existe
@@ -13,6 +15,13 @@ const CookieConsent = () => {
       setShowBanner(true);
     }
   }, []);
+
+  useEffect(() => {
+    // Fermer la bannière si l'utilisateur est sur la page de politique de confidentialité
+    if (pathname === "/privacy-policy") {
+      setShowBanner(false);
+    }
+  }, [pathname]); // Recalculer si le chemin change
 
   const handleAccept = () => {
     // Créer un cookie pour stocker le consentement de l'utilisateur
@@ -31,7 +40,7 @@ const CookieConsent = () => {
   return (
     <div className="z-40 fixed bottom-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
       <div>
-        En continuant, vous acceptez notre notre politique de confidentialité.{" "}
+        En continuant, vous acceptez notre politique de confidentialité.{" "}
         <a href="/privacy-policy" className="underline">
           En savoir plus
         </a>

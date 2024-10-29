@@ -32,7 +32,7 @@ export default async function NewAppointment({
               height={1000}
               width={1000}
               alt="patient"
-              className="mb-12 h-10 w-fit"
+              className="mb-12 h-10 sm:h-12 md:h-14 lg:h-14 w-fit"
             />
             {/* Formulaire de création de rendez-vous 
             //@ts-expect-error: Ignorer les erreurs TypeScript pour l'importation d'AppointmentForm.*/}

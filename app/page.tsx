@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex h-screen max-h-screen">
+      <div className="flex min-h-screen">
         <div className="grid grid-cols-1 lg:grid-cols-12 max-w-screen-xl px-4 pt-20 pb-8 mx-auto gap-8 lg:py-8 lg:pt-6">
           {/* Texte : Colonne 1/12 en grand écran */}
           <div className="lg:col-span-7 flex flex-col justify-center">
@@ -39,7 +39,7 @@ export default function Home() {
               height={1000}
               width={1000}
               alt="patient"
-              className="mb-12 h-10 w-fit"
+              className="mb-12 h-10 sm:h-12 md:h-14 lg:h-16 w-fit"
             />
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl text-white">
               Découvrez <br /> une nouvelle façon de prendre vos{" "}
@@ -63,7 +63,7 @@ export default function Home() {
                 alt="hero image"
                 width={450}
                 height={450}
-                className="object-contain w-auto h-auto max-w-[450px] max-h-[450px]"
+                className="object-cover w-full max-h-[300px] sm:max-h-[350px] md:max-h-[375px] lg:max-h-[450px]"
               />
             </div>
           </div>
