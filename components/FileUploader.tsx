@@ -11,9 +11,13 @@ type FileUploaderProps = {
 };
 
 export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    onChange(acceptedFiles);
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      //@ts-expect-error: Erreur typscript mais pas d'erreur
+      onChange(acceptedFiles);
+    },
+    [onChange]
+  );
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 

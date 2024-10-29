@@ -55,7 +55,7 @@ const Success = async ({
           {/* Affichage du médecin */}
           <div className="flex items-center gap-3">
             <Image
-              src={doctor?.image!} // Image du médecin, récupérée à partir des données constantes.
+              src={doctor?.image || "/assets/images/admin.png"} // Image par défaut si `image` est undefined
               alt="docteur"
               width={100}
               height={100}

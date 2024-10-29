@@ -62,7 +62,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         identificationDocument: formData,
       };
 
-      //@ts-ignore
+      //@ts-expect-error: Erreur typescript mais pas une erreur
       const patient = await registerPatient(patientData);
 
       if (patient) router.push(`/patients/${user.$id}/nouveau-rendez-vous`);

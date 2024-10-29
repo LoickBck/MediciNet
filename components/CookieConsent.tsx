@@ -29,11 +29,9 @@ const CookieConsent = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
+    <div className="z-40 fixed bottom-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center">
       <div>
-        Nous utilisons des cookies pour améliorer votre expérience. En
-        continuant, vous acceptez notre utilisation des cookies et notre
-        politique de confidentialité.{" "}
+        En continuant, vous acceptez notre notre politique de confidentialité.{" "}
         <a href="/privacy-policy" className="underline">
           En savoir plus
         </a>

@@ -1,15 +1,9 @@
 "use server"; // Directive indiquant que ce fichier est destiné à être exécuté côté serveur.
 
-import { ID, Query } from "node-appwrite"; // Importation des modules ID et Query depuis la bibliothèque node-appwrite.
 import {
-  BUCKET_ID,
   DATABASE_ID,
-  ENDPOINT,
   PATIENT_COLLECTION_ID,
-  PROJECT_ID,
   databases,
-  storage,
-  users,
 } from "../appwrite.config"; // Importation des configurations Appwrite pour la gestion des utilisateurs, bases de données et stockage.
 import { parseStringify } from "../utils"; // Importation d'une fonction utilitaire pour sérialiser/désérialiser les données.
 import { Patient } from "@/types/appwrite.types"; // Import du type Patient pour un typage strict

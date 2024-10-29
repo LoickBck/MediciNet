@@ -14,8 +14,9 @@ const Custom404 = () => {
           <h1 className="mt-3 text-3xl font-semibold  md:text-3xl">
             Page introuvable
           </h1>
-          <p className="mt-4 text-gray-500 dark:text-gray-400">
-            Désolé, la page que vous cherchez n'existe pas ou à été supprimé.
+          <p className="mt-4 text-gray-400">
+            Désolé, la page que vous cherchez n&apos;existe pas ou a été
+            supprimée.
           </p>
 
           <div className="flex items-center mt-6 gap-x-3">

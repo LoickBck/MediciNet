@@ -1,6 +1,5 @@
 import React from "react"; // Importation de React pour définir des composants React.
 import Image from "next/image"; // Importation du composant `Image` de Next.js pour gérer et optimiser les images.
-import Link from "next/link"; // Importation du composant `Link` de Next.js pour la navigation interne.
 import RegisterForm from "@/components/forms/RegisterForm"; // Importation du formulaire d'enregistrement personnalisé.
 import { getUser } from "@/lib/actions/patient.actions"; // Importation de la fonction pour récupérer les informations d'un utilisateur spécifique.
 

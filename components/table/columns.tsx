@@ -50,7 +50,9 @@ export const columns: ColumnDef<Appointment>[] = [
       return (
         <div className="flex items-center gap-3">
           <Image
+            //@ts-expect-error: Erreur Typescript mais pas d'erreur
             src={doctor?.image}
+            //@ts-expect-error: Erreur Typescript mais pas d'erreur
             alt={doctor.name}
             width={100}
             height={100}

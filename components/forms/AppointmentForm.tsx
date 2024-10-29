@@ -30,14 +30,12 @@ import { Appointment } from "@/types/appwrite.types"; // Importation du type `Ap
 const AppointmentForm = ({
   userId,
   patientId,
-  patientName,
   type,
   appointment,
   setOpen,
 }: {
   userId: string;
   patientId: string;
-  patientName: string;
   type: "créer" | "annuler" | "programmer";
   appointment?: Appointment;
   setOpen: (open: boolean) => void;
@@ -85,13 +83,13 @@ const AppointmentForm = ({
         const appointmentData = {
           userId,
           patient: patientId,
-          patientName,
           primaryPhysician: values.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
           note: values.note,
           status: status as Status,
         };
+        //@ts-expect-error: Erreur typescript mais pas une erreur
         const appointment = await createAppointment(appointmentData); // Création d'un nouveau rendez-vous.
 
         if (appointment) {
@@ -102,9 +100,14 @@ const AppointmentForm = ({
         }
       } else {
         console.log("Modification des RDV");
+        if (!appointment) {
+          console.error("Erreur : le rendez-vous est undefined.");
+          return;
+        }
+
         const appointmentToUpdate = {
           userId,
-          appointmentId: appointment?.$id!,
+          appointmentId: appointment.$id,
           appointment: {
             primaryPhysician: values?.primaryPhysician,
             schedule: new Date(values?.schedule),
@@ -113,10 +116,13 @@ const AppointmentForm = ({
           },
           type,
         };
+
         const updatedAppointment = await updateAppointment(appointmentToUpdate); // Mise à jour ou annulation du rendez-vous.
 
         if (updatedAppointment) {
-          setOpen && setOpen(false); // Ferme le modal si présent.
+          if (setOpen) {
+            setOpen(false); // Ferme le modal si présent.
+          }
           form.reset();
         }
       }

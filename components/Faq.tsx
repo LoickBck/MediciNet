@@ -218,7 +218,7 @@ const Faq = () => {
                   </div>
                   <div className="bg-gray-100 p-5 px-10 w-full flex items-center rounded-3xl">
                     <h4 className="text-md leading-6 font-medium text-gray-900">
-                      Si l'heure de mon rendez-vous ne me convient pas ?{" "}
+                      Si l&apos;heure de mon rendez-vous ne me convient pas ?{" "}
                     </h4>
                   </div>
                 </div>

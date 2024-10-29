@@ -97,8 +97,8 @@ export default function Home() {
             Heureux de travailler avec vous
           </h3>
           <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-dark-700">
-            Vous n'avez pas envie de rester en attente durant de longues minutes
-            pour prendre rendez-vous ?
+            Vous n&apos;avez pas envie de rester en attente durant de longues
+            minutes pour prendre rendez-vous ?
           </p>
           <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-dark-700">
             MediciNet réponds à votre attente en simplifiant la prise de
@@ -136,8 +136,8 @@ export default function Home() {
               </h4>
               <p className="text-md font-light mt-2 text-white">
                 Notre sélection de différents médecins saura combler vos
-                attentes et vos besoins, n'hésitez pas à prendre rendez-vous!
-                Même si c'est juste un check-up 🩺😉
+                attentes et vos besoins, n&apos;hésitez pas à prendre
+                rendez-vous! Même si c&apos;est juste un check-up 🩺😉
               </p>
             </blockquote>
           </div>

@@ -17,7 +17,7 @@ export default async function NewAppointment({
       // Affiche un message si le patient n'est pas trouvé.
       return (
         <div className="flex h-screen items-center justify-center">
-          <p>Patient non trouvé. Veuillez vérifier l'ID du patient.</p>
+          <p>Patient non trouvé. Veuillez vérifier l&apos;ID du patient.</p>
         </div>
       );
     }
@@ -35,7 +35,7 @@ export default async function NewAppointment({
               className="mb-12 h-10 w-fit"
             />
             {/* Formulaire de création de rendez-vous 
-            //@ts-ignore - Ignorer les erreurs TypeScript pour l'importation d'AppointmentForm.*/}
+            //@ts-expect-error: Ignorer les erreurs TypeScript pour l'importation d'AppointmentForm.*/}
             <AppointmentForm
               type="créer" // Définit le type d'opération (créer un rendez-vous).
               userId={userId} // Passe l'ID utilisateur au formulaire.

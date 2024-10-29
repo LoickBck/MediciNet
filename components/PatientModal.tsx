@@ -5,7 +5,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -74,7 +73,7 @@ export function PatientModal({
       toast.success("Patient mis à jour avec succès.");
       onPatientUpdated(updatedPatient);
       onClose();
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error("Erreur lors de la mise à jour du patient.");
     } finally {
       setLoading(false);

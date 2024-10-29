@@ -40,7 +40,7 @@ const PrivacyPolicy = () => {
               Informations médicales (antécédents médicaux, traitements en
               cours, allergies, etc.)
             </li>
-            <li>Documents d'identification</li>
+            <li>Documents d&apos;identification</li>
           </ul>
         </p>
 
@@ -96,7 +96,7 @@ const PrivacyPolicy = () => {
           Nous prenons des mesures appropriées pour protéger vos données contre
           tout accès non autorisé, altération ou divulgation. Nous utilisons des
           technologies de sécurité modernes pour assurer la confidentialité et
-          l'intégrité de vos informations.
+          l&apos;intégrité de vos informations.
         </p>
 
         <h2 className="text-xl font-semibold mt-4 mb-2 text-dark-500">
@@ -117,13 +117,13 @@ const PrivacyPolicy = () => {
           personnelles :
           <ul className="list-disc list-inside ml-4 mt-2">
             <li>
-              Droit d'accès : Vous pouvez demander à consulter vos données.
+              Droit d&apos;accès : Vous pouvez demander à consulter vos données.
             </li>
             <li>
               Droit de rectification : Vous pouvez corriger vos informations.
             </li>
             <li>
-              Droit à l'oubli : Vous pouvez demander la suppression de vos
+              Droit à l&apos;oubli : Vous pouvez demander la suppression de vos
               données.
             </li>
             <li>
@@ -131,8 +131,8 @@ const PrivacyPolicy = () => {
               vos données à un autre fournisseur.
             </li>
             <li>
-              Droit d'opposition : Vous pouvez vous opposer à certains types de
-              traitement.
+              Droit d&apos;opposition : Vous pouvez vous opposer à certains
+              types de traitement.
             </li>
             <li>
               Droit à la limitation du traitement : Vous pouvez demander la
@@ -157,8 +157,8 @@ const PrivacyPolicy = () => {
         </h2>
         <p className="text-gray-700 mb-4">
           Si vous avez des questions, des préoccupations ou si vous souhaitez
-          déposer une réclamation concernant l'utilisation de vos données
-          personnelles, vous pouvez nous contacter à l'adresse suivante :{" "}
+          déposer une réclamation concernant l&apos;utilisation de vos données
+          personnelles, vous pouvez nous contacter à l&apos;adresse suivante :{" "}
           <a
             href="mailto:loickbuck@hotmail.com"
             className="text-blue-500 hover:underline"
@@ -166,7 +166,7 @@ const PrivacyPolicy = () => {
             loickbuck@hotmail.com
           </a>
           . Vous avez également le droit de déposer une réclamation auprès de
-          l'Autorité de Protection des Données (APD) en Belgique.
+          l&apos;Autorité de Protection des Données (APD) en Belgique.
         </p>
 
         <div className="flex justify-center mt-6">

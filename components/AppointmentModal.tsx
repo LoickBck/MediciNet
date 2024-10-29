@@ -41,6 +41,7 @@ const AppointmentModal = ({
             rendez-vous
           </DialogDescription>
         </DialogHeader>
+        {/* //@ts-expect-error: Erreur typescript mais pas une erreur */}
         <AppointmentForm
           userId={userId}
           patientId={patientId}

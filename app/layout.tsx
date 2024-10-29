@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 /**
  * Définit la couleur du thème pour le navigateur mobile.
  */
-export const generateThemeColor = () => "#131619";
+const generateThemeColor = (): string => "#131619";
 
 /**
  * Définit la configuration de l'affichage pour les appareils mobiles.

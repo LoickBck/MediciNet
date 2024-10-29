@@ -3,7 +3,6 @@
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -13,7 +12,6 @@ import {
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useEffect, useState } from "react";
@@ -56,7 +54,7 @@ const PasswordModal = () => {
       localStorage.removeItem("accessPassExpiration");
       setOpen(true);
     }
-  }, [encryptedKey, expirationTime]);
+  }, [encryptedKey, expirationTime, router]);
 
   const validatePassword = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -80,7 +78,7 @@ const PasswordModal = () => {
 
   const closeModal = () => {
     setOpen(false);
-    router.push("/");
+    router.push("/rendez-vous");
   };
 
   return (
@@ -88,7 +86,7 @@ const PasswordModal = () => {
       <AlertDialogContent className="shad-alert-dialog">
         <AlertDialogHeader>
           <AlertDialogTitle className="flex items-start justify-between">
-            Vérification pour accéder à l'Administration
+            Vérification pour accéder à l&apos;Administration
             <Image
               src="/assets/icons/close.svg"
               alt="fermer"
@@ -99,7 +97,7 @@ const PasswordModal = () => {
             />
           </AlertDialogTitle>
           <AlertDialogDescription>
-            Pour accéder à la page d'administration, entrez le code de
+            Pour accéder à la page d&apos;administration, entrez le code de
             vérification.
           </AlertDialogDescription>
         </AlertDialogHeader>
