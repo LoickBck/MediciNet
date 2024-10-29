@@ -24,13 +24,16 @@ const Success = async ({
     <div className="flex h-screen max-h-screen px-[5%]">
       <div className="success-img">
         {/* Logo avec un lien vers la page d'accueil */}
-        <Link href="/">
+        <Link
+          href="/"
+          className="mb-12 h-auto max-w-[50%] sm:max-w-[40%] md:max-w-[40%] lg:max-w-[25%] justify-center items-center"
+        >
           <Image
             src="/assets/icons/logo-full.svg" // Chemin du logo à afficher.
             height={1000}
             width={1000}
             alt="logo"
-            className="mb-12 h-10 sm:h-12 md:h-14 lg:h-16 w-fit"
+            className="object-contain"
           />
         </Link>
         {/* Section affichant le message de succès */}

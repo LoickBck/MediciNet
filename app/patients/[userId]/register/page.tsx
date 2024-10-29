@@ -23,7 +23,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
             height={1000}
             width={1000}
             alt="patient"
-            className="mb-12 h-10 w-fit"
+            className="mb-12 h-auto max-w-[50%] sm:max-w-[40%] md:max-w-[40%] lg:max-w-[35%]"
           />
 
           {/* Formulaire d'enregistrement avec les informations utilisateur pré-remplies */}
