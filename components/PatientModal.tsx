@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import { updatePatient } from "@/lib/actions/updatePatient";
 import { Form } from "@/components/ui/form";
 import { FormFieldType } from "@/components/forms/PatientForm";
-import { Doctors } from "@/constants";
+import { Doctors, IdentificationTypes } from "@/constants";
 import Image from "next/image";
 import { SelectItem } from "./ui/select";
 
@@ -61,7 +61,10 @@ export function PatientModal({
 
   const form = useForm<PatientFormProps>({
     resolver: zodResolver(patientSchema),
-    defaultValues: patient,
+    defaultValues: {
+      ...patient,
+      birthDate: patient.birthDate ? new Date(patient.birthDate) : undefined,
+    },
   });
 
   const onSubmit = async (data: PatientFormProps) => {
@@ -209,6 +212,18 @@ export function PatientModal({
                 control={form.control}
                 name="identificationType"
                 label="Type d'identification"
+              >
+                {IdentificationTypes.map((type) => (
+                  <SelectItem key={type} value={type}>
+                    {type}
+                  </SelectItem>
+                ))}
+              </CustomFormField>
+              <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                control={form.control}
+                name="identificationNumber"
+                label="Numéro d'identification"
               />
             </div>
             <SubmitButton

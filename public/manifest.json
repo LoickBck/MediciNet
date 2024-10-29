@@ -1,33 +1,45 @@
 {
-  "name": "MediciNet",
+  "name": "MediciNet - Système de gestion des soins de santé",
   "short_name": "MediciNet",
-  "description": "Système de gestion des soins de santé pour planifier et gérer les rendez-vous, dossiers médicaux et bien plus.",
+  "description": "Application complète pour la gestion des soins de santé, facilitant la planification des rendez-vous, le suivi des dossiers médicaux et bien plus encore.",
   "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#121619",
+  "theme_color": "#121619",
+  "lang": "fr-FR",
   "categories": [
     "soins",
     "santé",
     "rendez-vous médical",
     "médical",
     "médecin",
-    "médecin généraliste"
+    "médecin généraliste",
+    "gestion",
+    "application santé"
   ],
-  "background_color": "##121619",
-  "theme_color": "##121619",
-  "display": "standalone",
-  "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "/assets/images/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "/assets/images/logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "scope": "/",
-  "lang": "fr",
-  "shortcuts": {
-    "name": "Planifier un rendez-vous",
-    "short_name": "Rendez-vous",
-    "description": "Accéder rapidement à la planification des rendez-vous.",
-    "url": "/rendez-vous"
-  }
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://www.buckloick.medicinet.com",
+      "id": "com.medicinet.web"
+    }
+  ],
+  "permissions": ["notifications", "camera"],
+  "prefer_related_applications": false
 }

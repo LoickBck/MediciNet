@@ -98,6 +98,8 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <meta name="viewport" content={generateViewport()} />
+        <meta name="theme-color" content={generateThemeColor()} />
         <link rel="icon" href="/assets/favicon.ico" />
         <link rel="shortcut icon" href="/assets/favicon.ico" />
         <link rel="apple-touch-icon" href="/assets/icons/logo-icon.svg" />
