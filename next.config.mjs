@@ -10,6 +10,7 @@ const nextConfig = {
     workerThreads: false,
     cpus: 1,
   },
+  output: "server", // Utilisation de l'option serveur pour autoriser SSR et CSR
 };
 
 export default nextConfig;
