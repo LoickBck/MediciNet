@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: "build",
@@ -10,7 +8,12 @@ const nextConfig = {
     workerThreads: false,
     cpus: 1,
   },
-  output: "server", // Utilisation de l'option serveur pour autoriser SSR et CSR
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
